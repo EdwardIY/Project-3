@@ -36,30 +36,38 @@ export default function Week({ searchMethod, searchedLocation,searching,setError
         if (data && !error) {
             const list = data.list.filter((timeStamp: { dt: number }) => {
                 const time = new Date(timeStamp.dt * 1000).toLocaleTimeString();
-                const today = new Date().toDateString().slice(0, 4)
+                const today = new Date().toDateString().slice(0, 4); 
 
-                // console.log(timeStamp, new Date(timeStamp.dt * 1000).toDateString(), new Date(timeStamp.dt * 1000).toLocaleTimeString())
                            
-                if (time === '8:00:00 AM' || time === '11:00:00 AM' || time === '5:00:00 PM') {
-                  if (!new Date(timeStamp.dt * 1000).toDateString().includes(today)) return true;
-                           }
-                       })
-   
+                switch (time) {
+                    case '8:00:00 AM':
+                        return verify()
+                    case '11:00:00 AM':
+                        return verify()
+                    case '5:00:00 PM':
+                        return verify()
+
+                }
+                function verify() {
+                    return !new Date(timeStamp.dt * 1000).toDateString().includes(today) ? 
+                        true : false
+                }     
+            })
+            console.log(list)
+
            let days: any[] = [];
           // Group list of timestamps into groups of 3 (morn / mid / after
             for (let i = 0; i < list.length; i += 3)  days.push([...list].splice(i, 3));
 
             days.forEach((x) => {
                 x.forEach((x:any) => {
-                    // console.log(x)
-                console.log(x.main.temp, new Date(x.dt * 1000).toDateString(), new Date(x.dt * 1000).toLocaleTimeString())
                 })
                 
 
             })
 
 
-                       
+  
            
             setWeek(days)
             // if(searchMethod == 'searched') setCoords([data.city.coord.lat,data.city.coord.lon])
