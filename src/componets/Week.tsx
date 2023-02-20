@@ -35,20 +35,15 @@ export default function Week({ searchMethod, searchedLocation,searching,setError
     useEffect(() => {
         if (data && !error) {
             const list = data.list.filter((timeStamp: { dt: number }) => {
-                const time = new Date(timeStamp.dt * 1000).toLocaleTimeString();
+                const time = new Date(timeStamp.dt * 1000).toLocaleTimeString()
                 const today = new Date().toDateString().slice(0, 4); 
-
-                           
-                switch (time) {
-                    case '8:00:00 AM':
-                        return verify()
-                    case '11:00:00 AM':
-                        return verify()
-                    case '5:00:00 PM':
-                        return verify()
-
-                }
+                
+                if (time.includes('8') && time.includes('AM')) return verify();
+                else if(time.includes('11') && time.includes('AM')) return verify();
+                else if(time.includes('5') && time.includes('PM')) return verify();
+                
                 function verify() {
+                    console.log('ran')
                     return !new Date(timeStamp.dt * 1000).toDateString().includes(today) ? 
                         true : false
                 }     
