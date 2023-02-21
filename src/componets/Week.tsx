@@ -85,6 +85,7 @@ export default function Week({ searchMethod, searchedLocation,searching,setError
                         <img src={`http://openweathermap.org/img/wn/${day[1].weather[0].icon}@2x.png`} alt="" />
                         <div className="info">
                             <span>{new Date(day[0].dt * 1000).toDateString().slice(0, 3)}</span>
+                        <span style={{ fontStyle: 'italic',textDecoration:'underline'}}><b>Description</b> : {day[1].weather[0].description.toUpperCase()}</span>
                             <span><b>Morning</b> : {day[0].main.temp} °F</span>
                             <span><b>Noon</b> : {day[1].main.temp} °F</span>
                             <span><b>Afternoon</b> : {day[2].main.temp} °F</span>
@@ -94,7 +95,8 @@ export default function Week({ searchMethod, searchedLocation,searching,setError
             else return <div key={day[0].dt} className="day">
                             <span>{new Date(day[0].dt * 1000).toDateString().slice(0,3)}</span>
                             <img src={`http://openweathermap.org/img/wn/${day[1] ? day[1].weather[0].icon : day[0].weather[0].icon }@2x.png`} style={{height:'75px', width:'75px'}}  alt=""/>
-                            <span><b>Morning</b>  {day[0] ? ': '+day[0].main.temp + ' °F' : '. . .'}</span>
+                            <span style={{ fontStyle: 'italic',textDecoration:'underline',marginBottom: '1em'}}><b>Description</b> : {day[0].weather[0].description.toUpperCase()}</span>
+                            <span><b>Morning</b>  {day[0] ? ': ' + day[0].main.temp + ' °F' : '. . .'}</span>
                             <span><b>Noon</b>  {day[1] ? ': '+day[1].main.temp + ' °F' : '. . .'}</span>
                             <span><b>Afternoon</b>  {day[2] ? ': '+day[2].main.temp + ' °F' : '. . .'}</span>
                         </div> 

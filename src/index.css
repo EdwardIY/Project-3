@@ -164,10 +164,6 @@ body {
     transform: scale(.9);
 }
 
-.week {
-    
-}
-
 .todayContainer {
     display: flex;
     flex-direction: column;
@@ -215,6 +211,7 @@ body {
     height: 40vh;
     background-color: rgba(0, 0, 0, 0.742);
     padding: .5em 3em;
+    padding-top: 1em;
     opacity: 1;
     align-items: center;
     display: flex;
@@ -270,7 +267,7 @@ body {
     padding: 1em;
     flex:1;
     /* min-width: 10%; */
-    min-width: 200px;
+    min-width: 275px;
 }
 
 .day span {
@@ -291,11 +288,13 @@ body {
     padding: 1em 0em;
 }
 
+
+
 @media(max-width:1025px) {
 
     .search {
         left: auto;
-        right: 0px;
+        right: 10px;
         top: 3vh;
     }
 
@@ -317,6 +316,17 @@ body {
         margin-top: 80vh;
     }
 
+    .week {
+        padding-left: .5em;
+        padding-right: .5em;
+        background-color: transparent;
+    }
+    
+    .week .day,
+    .week .Tomorrow {
+        background-color: rgba(0, 0, 0, 0.758);
+    }
+
     .search {
         left: 0;
         right: 0;
@@ -335,7 +345,7 @@ body {
         left: 0;
         right: 0;
         top: 3vh;
-        width: 100vw;
+        width: 95vw;
     }
 
     .myLocation {
@@ -354,9 +364,32 @@ body {
         text-align: center;
         align-items: center;
     }
+    .week .day,
+    .week .Tomorrow {
+        background-color: rgba(0, 0, 0, 0.758);
+    }
+
 
     .week .Tomorrow {
-        min-width: 90vw;
-        width: 90vw;
+        flex-direction: column;
+        text-align: center;
+        gap:0px;
+        padding: 0em 0em 1em 0em;
+        min-width:320px;
+        width: 320px ;
+    }
+    
+    .week .Tomorrow img {
+        width: 20%;
+    }
+    .Tomorrow span:nth-child(1){
+        padding: .1em 3em;
+        text-align: center;
+        align-self: center;
+        }
+    .week {
+        padding-left: .5em;
+        padding-right: .5em;
+        background-color: transparent;
     }
 }
